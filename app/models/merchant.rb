@@ -6,17 +6,15 @@ class Merchant < ApplicationRecord
   validates :name, presence: true
 
   def self.search(params)
-    merchants = []
+    merchants = Merchant.all
     params.each do |attribute, value|
-      if attribute == 'created_at'
-        merchants << Merchant.where("created_at BETWEEN ? and ?", "%#{value.to_date.beginning_of_day}%", "%#{value.to_date.end_of_day}%")
-      elsif attribute == 'updated_at'
-        merchants << Merchant.where("updated_at BETWEEN ? and ?", "%#{value.to_date.beginning_of_day}%", "%#{value.to_date.end_of_day}%")
+      if ['created_at', 'updated_at'].include?(attribute)
+        merchants = merchants.where("#{attribute} BETWEEN ? and ?", "%#{value.to_date.beginning_of_day}%", "%#{value.to_date.end_of_day}%")
       else
-        merchants << Merchant.where("#{attribute} like ?", "%#{value}%")
+        merchants = merchants.where("#{attribute} like ?", "%#{value.downcase}%")
       end
     end
-    merchants.first.first
+    merchants.first
   end
 
 end
