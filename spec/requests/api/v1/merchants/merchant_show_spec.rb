@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Merchant show endpoint" do
-  it "sends a list of merchants" do
+  it "sends a merchant" do
     merchant = create(:merchant)
 
     get "/api/v1/merchants/#{merchant.id}"
