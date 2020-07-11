@@ -12,6 +12,7 @@ describe "Item index endpoint" do
     items = JSON.parse(response.body)
 
     expect(items['data'].count).to eq(3)
-    expect(items['data'].first['type']).to eq('merchant')
+    expect(items['data'].first['type']).to eq('item')
+    expect(items['data'].first['attributes']['unit_price'].class).to eq(Float)
   end
 end
