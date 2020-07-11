@@ -7,7 +7,9 @@ gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'faker'
-
+gem 'active_model_serializers'
+gem 'fast_jsonapi'
+gem 'jsonapi-rails'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # gem 'rack-cors'
