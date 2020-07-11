@@ -12,7 +12,5 @@ describe "Merchant index endpoint" do
     merchants = JSON.parse(response.body)
 
     expect(merchants.count).to eq(3)
-    expect(merchants.first.class).to eq(Merchant)
-    expect(merchants.lastg.class).to eq(Merchant)
   end
 end
