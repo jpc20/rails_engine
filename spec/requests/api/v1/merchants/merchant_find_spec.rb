@@ -14,11 +14,11 @@ describe "Merchant find endpoints" do
     expect(merchant_json['data']['id'].to_i).to eq(merchant1.id)
   end
 
-  it "single merchant find by created_at" do
-    merchant1 = create(:merchant)
+  it "single merchant find by created_at and name" do
+    merchant1 = create(:merchant, name: "Walgreens Store")
     merchant2 = create(:merchant)
 
-    get "/api/v1/merchants/find?created_at=#{merchant1.created_at}"
+    get "/api/v1/merchants/find?created_at=#{merchant1.created_at}&name=green"
 
     expect(response).to be_successful
     expect(response.status).to eq(200)
