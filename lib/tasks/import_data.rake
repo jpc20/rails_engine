@@ -9,18 +9,22 @@ task :import_data do
   end
   merchants = "merchants.csv"
   items = "items.csv"
-  load_merchants(merchants)
-  load_items(items)
+  invoices = "invoices.csv"
+  customers = "customers.csv"
+  import_merchants(merchants)
+  import_items(items)
+  import_customers(customers)
+  # import_invoices(invoices)
   require "pry"; binding.pry
 end
 
-def load_merchants(file)
+def import_merchants(file)
   CSV.foreach("./lib/data/#{file}", headers: true, header_converters: :symbol) do |row|
     Merchant.create!({name: row[:name]})
   end
 end
 
-def load_items(file)
+def import_items(file)
   CSV.foreach("./lib/data/#{file}", headers: true, header_converters: :symbol) do |row|
     Item.create!({
                   name: row[:name],
@@ -30,3 +34,23 @@ def load_items(file)
                 })
   end
 end
+
+def import_customers(file)
+  CSV.foreach("./lib/data/#{file}", headers: true, header_converters: :symbol) do |row|
+    Customer.create!({
+                  first_name: row[:first_name],
+                  last_name: row[:last_name]
+                })
+  end
+end
+
+# def import_invoices(file)
+#   CSV.foreach("./lib/data/#{file}", headers: true, header_converters: :symbol) do |row|
+#     Invoice.create!({
+#                   name: row[:name],
+#                   description: row[:description],
+#                   unit_price: row[:unit_price].to_f / 100,
+#                   merchant_id: row[:merchant_id]
+#                 })
+#   end
+# end
