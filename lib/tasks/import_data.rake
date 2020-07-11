@@ -9,12 +9,12 @@ task :import_data do
   end
   merchants = "merchants.csv"
   items = "items.csv"
-  invoices = "invoices.csv"
   customers = "customers.csv"
+  invoices = "invoices.csv"
   import_merchants(merchants)
   import_items(items)
   import_customers(customers)
-  # import_invoices(invoices)
+  import_invoices(invoices)
   require "pry"; binding.pry
 end
 
@@ -44,13 +44,12 @@ def import_customers(file)
   end
 end
 
-# def import_invoices(file)
-#   CSV.foreach("./lib/data/#{file}", headers: true, header_converters: :symbol) do |row|
-#     Invoice.create!({
-#                   name: row[:name],
-#                   description: row[:description],
-#                   unit_price: row[:unit_price].to_f / 100,
-#                   merchant_id: row[:merchant_id]
-#                 })
-#   end
-# end
+def import_invoices(file)
+  CSV.foreach("./lib/data/#{file}", headers: true, header_converters: :symbol) do |row|
+    Invoice.create!({
+                  customer_id: row[:customer_id],
+                  merchant_id: row[:merchant_id],
+                  status: row[:status]
+                })
+  end
+end
