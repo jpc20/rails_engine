@@ -1,10 +1,10 @@
 class Api::V1::ItemsController < Api::V1::ApiController
   def index
-    render_all(Item, ItemSerializer)
+    render_json(Item.all, ItemSerializer)
   end
 
   def show
-    render_one(Item, params[:id], ItemSerializer)
+    render_json(Item.find(params[:id]), ItemSerializer)
   end
 
   def create
@@ -12,11 +12,11 @@ class Api::V1::ItemsController < Api::V1::ApiController
   end
 
   def destroy
-    destroy_and_render(Item, params[:id], ItemSerializer)
+    destroy_and_render(Item.find(params[:id]), ItemSerializer)
   end
 
   def update
-    update_and_render(Item, params[:id], item_params, ItemSerializer)
+    update_and_render(Item.find(params[:id]), item_params, ItemSerializer)
   end
 
   private

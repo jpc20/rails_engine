@@ -2,14 +2,8 @@ class Api::V1::ApiController < ApplicationController
 
   private
 
-  def render_all(type, serializer)
-    objects = type.all
-    render json: serializer.new(objects).serializable_hash
-  end
-
-  def render_one(type, id, serializer)
-    object = type.find(id)
-    render json: serializer.new(object).serializable_hash
+  def render_json(obj, serializer)
+    render json: serializer.new(obj).serializable_hash
   end
 
   def create_and_render(type, params, serializer)
@@ -17,15 +11,13 @@ class Api::V1::ApiController < ApplicationController
     render json: serializer.new(new_object).serializable_hash
   end
 
-  def destroy_and_render(type, id, serializer)
-    object = type.find(id)
+  def destroy_and_render(object, serializer)
     object.destroy
-    render json: serializer.new(object).serializable_hash
+    render_json(object, serializer)
   end
 
-  def update_and_render(type, id, params, serializer)
-    object = type.find(id)
+  def update_and_render(object ,params, serializer)
     object.update(params)
-    render json: serializer.new(object).serializable_hash
+    render_json(object, serializer)
   end
 end

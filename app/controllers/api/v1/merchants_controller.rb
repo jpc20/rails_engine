@@ -1,10 +1,10 @@
 class Api::V1::MerchantsController < Api::V1::ApiController
   def index
-    render_all(Merchant, MerchantSerializer)
+    render_json(Merchant.all, MerchantSerializer)
   end
 
   def show
-    render_one(Merchant, params[:id], MerchantSerializer)
+    render_json(Merchant.find(params[:id]), MerchantSerializer)
   end
 
   def create
@@ -12,11 +12,11 @@ class Api::V1::MerchantsController < Api::V1::ApiController
   end
 
   def destroy
-    destroy_and_render(Merchant, params[:id], MerchantSerializer)
+    destroy_and_render(Merchant.find(params[:id]), MerchantSerializer)
   end
 
   def update
-    update_and_render(Merchant, params[:id], merchant_params, MerchantSerializer)
+    update_and_render(Merchant.find(params[:id]), merchant_params, MerchantSerializer)
   end
 
   private
