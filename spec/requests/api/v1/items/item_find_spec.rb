@@ -32,7 +32,7 @@ describe "Item find endpoints" do
     item2 = create(:item, name: 'toothbrush')
     create(:item)
 
-    get "/api/v1/items/find_by?name=tooth"
+    get "/api/v1/items/find_all?name=tooth"
 
     expect(response).to be_successful
     expect(response.status).to eq(200)
