@@ -1,29 +1,22 @@
-class Api::V1::MerchantsController < ApplicationController
+class Api::V1::MerchantsController < Api::V1::ApiController
   def index
-    merchants = Merchant.all
-    render json: MerchantSerializer.new(merchants).serializable_hash
+    render_json(Merchant.all, MerchantSerializer)
   end
 
   def show
-    merchant = Merchant.find(params[:id])
-    render json: MerchantSerializer.new(merchant).serializable_hash
+    render_json(Merchant.find(params[:id]), MerchantSerializer)
   end
 
   def create
-    new_merchant = Merchant.create(merchant_params)
-    render json: MerchantSerializer.new(new_merchant).serializable_hash
+    create_and_render(Merchant, merchant_params, MerchantSerializer)
   end
 
   def destroy
-    merchant = Merchant.find(params[:id])
-    merchant.delete
-    render json: MerchantSerializer.new(merchant).serializable_hash
+    destroy_and_render(Merchant.find(params[:id]), MerchantSerializer)
   end
 
   def update
-    merchant = Merchant.find(params[:id])
-    merchant.update(merchant_params)
-    render json: MerchantSerializer.new(merchant).serializable_hash
+    update_and_render(Merchant.find(params[:id]), merchant_params, MerchantSerializer)
   end
 
   private
