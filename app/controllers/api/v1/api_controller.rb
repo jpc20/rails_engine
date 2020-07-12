@@ -8,7 +8,7 @@ class Api::V1::ApiController < ApplicationController
 
   def create_and_render(type, params, serializer)
     new_object = type.create(params)
-    render json: serializer.new(new_object).serializable_hash
+    render_json(new_object, serializer)
   end
 
   def destroy_and_render(object, serializer)
