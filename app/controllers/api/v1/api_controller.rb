@@ -22,4 +22,10 @@ class Api::V1::ApiController < ApplicationController
     object.destroy
     render json: serializer.new(object).serializable_hash
   end
+
+  def update_and_render(type, id, params, serializer)
+    object = type.find(id)
+    object.update(params)
+    render json: serializer.new(object).serializable_hash
+  end
 end

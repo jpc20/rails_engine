@@ -16,9 +16,7 @@ class Api::V1::ItemsController < Api::V1::ApiController
   end
 
   def update
-    item = Item.find(params[:id])
-    item.update(item_params)
-    render json: ItemSerializer.new(item).serializable_hash
+    update_and_render(Item, params[:id], item_params, ItemSerializer)
   end
 
   private
