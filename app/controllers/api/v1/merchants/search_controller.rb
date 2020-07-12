@@ -1,13 +1,9 @@
-class Api::V1::Merchants::SearchController < ApplicationController
+class Api::V1::Merchants::SearchController < Api::V1::ApiSearchController
   def show
-    attributes = params.except(*request.path_parameters.keys)
-    merchant = Merchant.search(attributes).first
-    render json: MerchantSerializer.new(merchant).serializable_hash
+    render_one(Merchant, MerchantSerializer)
   end
 
   def index
-    attributes = params.except(*request.path_parameters.keys)
-    merchant = Merchant.search(attributes)
-    render json: MerchantSerializer.new(merchant).serializable_hash
+    render_all(Merchant, MerchantSerializer)
   end
 end
