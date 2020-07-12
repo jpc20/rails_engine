@@ -1,7 +1,6 @@
-class Api::V1::MerchantsController < ApplicationController
+class Api::V1::MerchantsController < Api::V1::ApiController
   def index
-    merchants = Merchant.all
-    render json: MerchantSerializer.new(merchants).serializable_hash
+    render_all(Merchant, MerchantSerializer)
   end
 
   def show

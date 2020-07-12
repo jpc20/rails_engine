@@ -1,7 +1,6 @@
-class Api::V1::ItemsController < ApplicationController
+class Api::V1::ItemsController < Api::V1::ApiController
   def index
-    items = Item.all
-    render json: ItemSerializer.new(items).serializable_hash
+    render_all(Item, ItemSerializer)
   end
 
   def show
