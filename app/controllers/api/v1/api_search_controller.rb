@@ -1,15 +1,13 @@
-class Api::V1::ApiSearchController < ApplicationController
+class Api::V1::ApiSearchController < Api::V1::ApiController
 
   private
 
   def render_one(type, serializer)
-    object = type.search(attributes).first
-    render json: serializer.new(object).serializable_hash
+    render_json(type.search(attributes).first, serializer)
   end
 
   def render_all(type, serializer)
-    object = type.search(attributes)
-    render json: serializer.new(object).serializable_hash
+    render_json(type.search(attributes), serializer)
   end
 
   def attributes
