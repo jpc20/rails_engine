@@ -8,8 +8,7 @@ class Api::V1::MerchantsController < Api::V1::ApiController
   end
 
   def create
-    new_merchant = Merchant.create(merchant_params)
-    render json: MerchantSerializer.new(new_merchant).serializable_hash
+    create_and_render(Merchant, merchant_params, MerchantSerializer)
   end
 
   def destroy

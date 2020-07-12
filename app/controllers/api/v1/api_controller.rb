@@ -11,4 +11,9 @@ class Api::V1::ApiController < ApplicationController
     object = type.find(id)
     render json: serializer.new(object).serializable_hash
   end
+
+  def create_and_render(type, params, serializer)
+    new_object = type.create(params)
+    render json: serializer.new(new_object).serializable_hash
+  end
 end

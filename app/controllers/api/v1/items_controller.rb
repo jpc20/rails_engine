@@ -8,8 +8,7 @@ class Api::V1::ItemsController < Api::V1::ApiController
   end
 
   def create
-    item = Item.create(item_params)
-    render json: ItemSerializer.new(item).serializable_hash
+    create_and_render(Item, item_params, ItemSerializer)
   end
 
   def destroy
