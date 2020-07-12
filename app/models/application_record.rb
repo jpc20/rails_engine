@@ -12,6 +12,6 @@ class ApplicationRecord < ActiveRecord::Base
         objects = objects.where("LOWER(#{attribute}) LIKE ?", "%#{value.downcase}%")
       end
     end
-    objects.first
+    objects
   end
 end
