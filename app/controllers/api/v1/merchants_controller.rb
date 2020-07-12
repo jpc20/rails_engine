@@ -12,9 +12,7 @@ class Api::V1::MerchantsController < Api::V1::ApiController
   end
 
   def destroy
-    merchant = Merchant.find(params[:id])
-    merchant.delete
-    render json: MerchantSerializer.new(merchant).serializable_hash
+    destroy_and_render(Merchant, params[:id], MerchantSerializer)
   end
 
   def update

@@ -12,9 +12,7 @@ class Api::V1::ItemsController < Api::V1::ApiController
   end
 
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
-    render json: ItemSerializer.new(item).serializable_hash
+    destroy_and_render(Item, params[:id], ItemSerializer)
   end
 
   def update
