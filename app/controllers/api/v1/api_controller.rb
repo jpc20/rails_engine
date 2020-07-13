@@ -3,7 +3,7 @@ class Api::V1::ApiController < ApplicationController
   private
 
   def render_json(obj, serializer)
-    render json: serializer.new(obj).serializable_hash
+    render json: serializer.new(obj)
   end
 
   def create_and_render(type, params, serializer)
