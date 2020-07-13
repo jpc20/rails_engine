@@ -52,7 +52,8 @@ def import_invoices(file)
     Invoice.create!({
                   customer_id: row[:customer_id],
                   merchant_id: row[:merchant_id],
-                  status: row[:status]
+                  status: row[:status],
+                  created_at: row[:created_at]
                 })
   end
 end
