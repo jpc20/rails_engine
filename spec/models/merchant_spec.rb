@@ -36,6 +36,9 @@ RSpec.describe Merchant, type: :model do
       create(:invoice_item, invoice_id: invoice2.id, item_id: item2.id, quantity: 8, unit_price: item2.unit_price)
       create(:invoice_item, invoice_id: invoice3.id, item_id: item3.id, quantity: 6, unit_price: item2.unit_price)
       create(:invoice_item, invoice_id: invoice4.id, item_id: item4.id, quantity: 4, unit_price: item4.unit_price)
+      create(:transaction, invoice_id: invoice1.id)
+      create(:transaction, invoice_id: invoice2.id)
+      create(:transaction, invoice_id: invoice4.id)
 
       expect(Merchant.most_revenue(2).first).to eq(merchant1)
       expect(Merchant.most_revenue(2).last).to eq(merchant2)
