@@ -69,5 +69,15 @@ RSpec.describe Merchant, type: :model do
       expect(Merchant.most_items_sold(2).first).to eq(merchant4)
       expect(Merchant.most_items_sold(2).last).to eq(merchant1)
     end
+
+    it "total_revenue" do
+      merchant1 = create(:merchant)
+      item1 = create(:item, unit_price: 99.82, merchant_id: merchant1.id)
+      invoice1 = create(:invoice, merchant_id: merchant1.id)
+      create(:invoice_item, invoice_id: invoice1.id, item_id: item1.id, quantity: 10, unit_price: item1.unit_price)
+      create(:transaction, invoice_id: invoice1.id)
+
+      expect(merchant1.total_revenue.round(2)).to eq(998.20)
+    end
   end
 end
