@@ -3,6 +3,5 @@ class RevenueSerializer
 
   attribute :revenue do |obj|
     obj.total_revenue
-
   end
 end
