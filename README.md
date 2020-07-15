@@ -31,7 +31,7 @@ Rspec was used to test all of the endpoints. The front end of the application th
 ### Schema
 ![schema]()
 
-### Endpoints  
+### CRUD Endpoints  
 
 #### Index of an Item or Merchant
 
@@ -150,4 +150,107 @@ body:
   }
 }
 ```
-### Relationships
+### Relationship Endpoints
+
+#### Index of items associated with a merchant
+
+Request:
+```
+GET /api/v1/merchants/:id/items
+```
+Response:
+```
+body:
+{
+  "data": [
+    {
+      "id": "1",
+        "type": "item",
+        "attributes": {
+          "name": "Item Name",
+          "description": "Item Description",
+          "unit_price": "31163",
+          "merchant_id": "1"
+        }
+    },
+    {
+      "id": "2",
+      "type": "item",
+        "attributes": {
+          "name": "Another Item Name",
+          "description": "Another Item Description",
+          "unit_price": "66543",
+          "merchant_id": "1"
+       }
+    }
+  ]
+}
+```
+
+#### Return the merchant associated with an item
+
+Request:
+```
+GET /api/v1/items/:id/merchant
+```
+Response:
+```
+body:
+{
+  "data": {
+    "id": "1",
+    "type": "merchant",
+    "attributes": {
+      "name": "Store Name"
+    }
+  }
+}
+```
+### Find Endpoints
+
+#### Single Finders for items and merchants
+
+Request:
+```
+GET /api/v1/merchants/find?name=ring
+```
+Response:
+```
+{
+  "data": {
+    "id": 4,
+    "type": "merchant",
+    "attributes": {
+      "name": "Ring World"
+    }
+  }
+}
+```
+
+#### Multi Finders for items and merchants
+Request:
+```
+GET /api/v1/merchants/find?name=ring
+```
+Response:
+```
+body:
+{
+  "data": [
+    {
+      "id": "4",
+      "type": "merchant",
+      "attributes": {
+        "name": "Ring World"
+      }
+    },
+    {
+      "id": "1",
+      "type": "merchant",
+      "attributes": {
+        "name": "Turing School"
+      }
+    }
+  ]
+}
+```
