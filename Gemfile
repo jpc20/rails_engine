@@ -12,7 +12,7 @@ gem 'fast_jsonapi'
 gem 'jsonapi-rails'
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# gem 'rack-cors'
+gem 'rack-cors'
 gem 'rspec-rails'
 
 gem 'simplecov', require: false, group: :test
