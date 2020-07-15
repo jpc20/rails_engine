@@ -230,7 +230,7 @@ Response:
 #### Multi Finders for items and merchants
 Request:
 ```
-GET /api/v1/merchants/find?name=ring
+GET /api/v1/merchants/find_all?name=ring
 ```
 Response:
 ```
@@ -252,5 +252,96 @@ body:
       }
     }
   ]
+}
+```
+### Business Intelligence Endpoints
+
+#### Merchants with most revenue
+
+Request:
+```
+GET /api/v1/merchants/most_revenue?quantity=2
+```
+Response:
+```
+body:
+{
+  "data": [
+    {
+      "id": "4",
+      "type": "merchant",
+      "attributes": {
+        "name": "Ring World"
+      }
+    },
+    {
+      "id": "1",
+      "type": "merchant",
+      "attributes": {
+        "name": "Turing School"
+      }
+    }
+  ]
+}
+```
+#### Merchants with most items sold
+Request:
+```
+GET /api/v1/merchants/most_items?quantity=2
+```
+Response:
+```
+body:
+{
+  "data": [
+    {
+      "id": "4",
+      "type": "merchant",
+      "attributes": {
+        "name": "Ring World"
+      }
+    },
+    {
+      "id": "1",
+      "type": "merchant",
+      "attributes": {
+        "name": "Turing School"
+      }
+    }
+  ]
+}
+```
+
+#### Revenue across date range
+```
+GET /api/v1/revenue?start=<start_date>&end=<end_date>
+```
+Response:
+```
+body:
+{
+  "data": {
+    "id": null,
+    "attributes": {
+      "revenue"  : 43201227.8000003
+    }
+  }
+}
+```
+#### Revenue for a merchant
+
+```
+GET /api/v1/merchants/:id/revenue
+```
+Response:
+```
+body:
+{
+  "data": {
+    "id": null,
+    "attributes": {
+      "revenue"  : 43201227.8000003
+    }
+  }
 }
 ```
