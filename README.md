@@ -1,7 +1,7 @@
 ## Rails Engine API
 
 ### Overview
-Rails Engine is a 1 week project completed by [Jack Cullen](https://github.com/jpc20) in Module 3 of the back-end program at Turing School of Software and Design. It is a the back-end of mock E-Commerce application. It exposes an API with merchant, item, and revenue data loaded from CSV files. The front-end, [Rails Driver](https://github.com/jpc20/rails_driver), is responsible for consuming the API and interacting with users.
+Rails Engine is a 1 week project completed by [Jack Cullen](https://github.com/jpc20) in Module 3(of 4) of the back-end program at Turing School of Software and Design. It is a the back-end of mock E-Commerce application. It exposes an API with merchant, item, and revenue data loaded from CSV files. The front-end, [Rails Driver](https://github.com/jpc20/rails_driver), is responsible for consuming the API and interacting with users.
 
 ### Setup
 
