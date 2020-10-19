@@ -27,7 +27,7 @@ $ bundle exec rspec
 ```
 
 ### Testing
-Rspec was used to test all of the endpoints. The front end of the application that has a spec harness which also tests all of the endpoints and is responsible for displaying the data can be found at [Rails Driver](https://github.com/jpc20/rails_driver)
+Rspec was used to test all of the endpoints. The front-end of the application that has a spec-harness which also tests all of the endpoints and is responsible for displaying the data can be found at [Rails Driver](https://github.com/jpc20/rails_driver)
 
 ### Schema
 ![Schema](https://i.imgur.com/MKFfiGG.png)
